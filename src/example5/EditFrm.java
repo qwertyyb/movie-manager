@@ -58,6 +58,7 @@ public class EditFrm extends JFrame{
 		this.parent = parent;
 		initLayout();
 		addListener();
+		setTitle("编辑-电影管理系统");
 	}
 	private void initLayout() {
 		JLabel thumb = new JLabel("封面"), 
