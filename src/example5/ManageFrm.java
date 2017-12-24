@@ -2,7 +2,9 @@ package example5;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -114,6 +116,7 @@ public class ManageFrm extends JFrame {
 	
 	private ManageFrm that = this;
 	private String user;
+	private JLabel labelUser = new JLabel(user);
 	
 	ManageFrm(String user) {
 		this.user = user;
@@ -170,6 +173,7 @@ public class ManageFrm extends JFrame {
 		getContentPane().setBackground(Color.WHITE);
 		setBounds(100, 100, 1600, 920);
 		
+		// 菜单栏
 		JMenu MovieMenu = new JMenu("电影管理");
 		MovieMenu.setFont(defaultFont);
 		JMenuItem addItem = new JMenuItem("添加");
@@ -192,11 +196,19 @@ public class ManageFrm extends JFrame {
 		userMenu.add(resetPwdItem);
 		menuBar.add(MovieMenu);
 		menuBar.add(userMenu);
+		
+		// 状态栏
+		JToolBar toolBar = new JToolBar();
+		labelUser.setText("用户：" + user);
+		toolBar.add(labelUser);
+		toolBar.setFloatable(false);
+		
 		// 设置字体
 		btnAdd.setFont(defaultFont);
 		btnEdit.setFont(defaultFont);
 		btnDel.setFont(defaultFont);
 		tabPane.setFont(defaultFont);
+		labelUser.setFont(defaultFont);
 		labelTitle.setFont(new Font("Microsoft YaHei", 0, 36));
 		// 设置标题居中
 		labelTitle.setHorizontalAlignment(JLabel.CENTER);
@@ -209,10 +221,14 @@ public class ManageFrm extends JFrame {
 		panel.add(btnAdd);
 		panel.add(btnEdit);
 		panel.add(btnDel);
-		
+		((FlowLayout)panel.getLayout()).setVgap(100);
+		panel.setPreferredSize(new Dimension(160, 500));
+		panel.setBackground(Color.WHITE);
+
 		add(labelTitle, BorderLayout.NORTH);
 		add(tabPane, BorderLayout.CENTER);
-		add(panel, BorderLayout.SOUTH);
+		add(panel, BorderLayout.EAST);
+		add(toolBar, BorderLayout.SOUTH);
 		setJMenuBar(menuBar);
 	}
 	
