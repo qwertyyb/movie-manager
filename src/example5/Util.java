@@ -14,7 +14,7 @@ public class Util {
 				return conn.createStatement();
 			}
 			String driver = "com.mysql.jdbc.Driver";
-			String url = "jdbc:mysql://localhost:3306/javaexample";
+			String url = "jdbc:mysql://localhost:3306/javaexample?characterEncoding=utf8";
 			Class.forName(driver);
 			conn = DriverManager.getConnection(url, "root", "123456");
 			return conn.createStatement();
@@ -36,7 +36,7 @@ public class Util {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+			// TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
 			e.printStackTrace();
 		}
 		
@@ -57,7 +57,7 @@ public class Util {
 			}
 			return false;
 		} catch (SQLException e) {
-			// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+			// TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
 			e.printStackTrace();
 		}
 		return false;
@@ -78,7 +78,7 @@ public class Util {
 			}
 			return movies;
 		} catch (SQLException e) {
-			// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+			// TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
 			e.printStackTrace();
 		}
 		return null;
@@ -97,7 +97,7 @@ public class Util {
 			}
 			return false;
 		} catch (SQLException e) {
-			// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+			// TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
 			e.printStackTrace();
 		}
 		
@@ -123,7 +123,7 @@ public class Util {
 			}
 			return false;
 		} catch (SQLException e) {
-			// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+			// TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
 			e.printStackTrace();
 		}
 		return false;
@@ -138,7 +138,7 @@ public class Util {
 			}
 			return false;
 		} catch (SQLException e) {
-			// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+			// TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
 			e.printStackTrace();
 		}
 		return false;

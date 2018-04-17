@@ -27,9 +27,9 @@ public class EditFrm extends JFrame{
 			typeInput = new JTextField(),
 			countryInput = new JTextField();
 	private JTextArea detailInput = new JTextArea();
-	private JButton btnChooseImage = new JButton("Ñ¡ÔñÍ¼Æ¬"),
-			btnSubmit = new JButton("±£´æ");
-	private JLabel thumbView = new JLabel("ÔİÎŞÍ¼Æ¬");
+	private JButton btnChooseImage = new JButton("é€‰æ‹©å›¾ç‰‡"),
+			btnSubmit = new JButton("ä¿å­˜");
+	private JLabel thumbView = new JLabel("æš‚æ— å›¾ç‰‡");
 	private String thumbInput;
 	private ManageFrm parent;
 	private EditFrm that = this;
@@ -37,6 +37,8 @@ public class EditFrm extends JFrame{
 	EditFrm(ManageFrm parent) {
 		this.parent = parent;
 		initLayout();
+		addListener();
+		setTitle("æ·»åŠ -ç”µå½±ç®¡ç†ç³»ç»Ÿ");
 	}
 	EditFrm(ManageFrm parent, HashMap<String, String> movie) {
 		titleInput.setText(movie.get("title"));
@@ -58,20 +60,20 @@ public class EditFrm extends JFrame{
 		this.parent = parent;
 		initLayout();
 		addListener();
-		setTitle("±à¼­-µçÓ°¹ÜÀíÏµÍ³");
+		setTitle("ç¼–è¾‘-ç”µå½±ç®¡ç†ç³»ç»Ÿ");
 	}
 	private void initLayout() {
-		JLabel thumb = new JLabel("·âÃæ"), 
-				title = new JLabel("Ó°Æ¬Ãû"), 
-				actors = new JLabel("ÑİÔ±"), 
-				director = new JLabel("µ¼Ñİ"), 
-				showDate  = new JLabel("ÉÏÓ³ÈÕÆÚ"),
-				time = new JLabel("Ê±³¤"),
-				type = new JLabel("ÀàĞÍ"), 
-				country = new JLabel("¹ú¼Ò"),
-				detail = new JLabel("¾çÇé¹£¸Å");
+		JLabel thumb = new JLabel("å°é¢"), 
+				title = new JLabel("å½±ç‰‡å"), 
+				actors = new JLabel("æ¼”å‘˜"), 
+				director = new JLabel("å¯¼æ¼”"), 
+				showDate  = new JLabel("ä¸Šæ˜ æ—¥æœŸ"),
+				time = new JLabel("æ—¶é•¿"),
+				type = new JLabel("ç±»å‹"), 
+				country = new JLabel("å›½å®¶"),
+				detail = new JLabel("å‰§æƒ…æ¢—æ¦‚");
 		
-		// ÉèÖÃ×é¼şµÄÎ»ÖÃ
+		// è®¾ç½®ç»„ä»¶çš„ä½ç½®
 		thumb.setBounds(60, 240, 80, 40);
 		title.setBounds(60, 280, 80, 40);
 		actors.setBounds(60, 320, 80, 40);
@@ -93,7 +95,7 @@ public class EditFrm extends JFrame{
 		typeInput.setBounds(160, 485, 560, 30);
 		countryInput.setBounds(160, 525, 560, 30);
 		
-		// ÉèÖÃ×Ô¶¯»»ĞĞºÍ¹ö¶¯Ìõ
+		// è®¾ç½®è‡ªåŠ¨æ¢è¡Œå’Œæ»šåŠ¨æ¡
 		detailInput.setLineWrap(true);
 		detailInput.setWrapStyleWord(true);
 		JScrollPane scrollPane = new JScrollPane(detailInput);
@@ -101,7 +103,7 @@ public class EditFrm extends JFrame{
 		scrollPane.setBounds(160, 565, 560, 200);
 		btnSubmit.setBounds(300, 830, 140, 30);
 		
-		// ÉèÖÃ×ÖÌå
+		// è®¾ç½®å­—ä½“
 		thumbView.setFont(defaultFont);
 		thumb.setFont(defaultFont);
 		title.setFont(defaultFont);
@@ -124,7 +126,7 @@ public class EditFrm extends JFrame{
 		detailInput.setFont(defaultFont);
 		btnSubmit.setFont(defaultFont);
 		
-		// ÎÄ±¾ÉèÖÃ×ÖÌå
+		// æ–‡æœ¬è®¾ç½®å­—ä½“
 		thumbView.setHorizontalAlignment(JLabel.CENTER);
 		thumb.setHorizontalAlignment(JLabel.RIGHT);
 		title.setHorizontalAlignment(JLabel.RIGHT);
@@ -137,7 +139,7 @@ public class EditFrm extends JFrame{
 		detail.setHorizontalAlignment(JLabel.RIGHT);
 		
 		thumbView.setForeground(Color.GRAY);
-		// Ìí¼Óµ½²¼¾ÖÖĞ
+		// æ·»åŠ åˆ°å¸ƒå±€ä¸­
 		setLayout(null);
 		add(thumb);
 		add(title);
@@ -159,8 +161,8 @@ public class EditFrm extends JFrame{
 		add(countryInput);
 		add(scrollPane);
 		add(btnSubmit);
-		// ÉèÖÃ´°¿ÚµÄÊôĞÔ
-		setTitle("Ìí¼ÓµçÓ°-µçÓ°¹ÜÀíÏµÍ³");
+		// è®¾ç½®çª—å£çš„å±æ€§
+		setTitle("æ·»åŠ ç”µå½±-ç”µå½±ç®¡ç†ç³»ç»Ÿ");
 		getContentPane().setBackground(Color.WHITE);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(400, 60, 800, 940);
@@ -168,11 +170,11 @@ public class EditFrm extends JFrame{
 	}
 		
 	private void addListener() {
-		// ¸øÑ¡ÔñÍ¼Æ¬µÄ°´Å¥Ìí¼ÓÊÂ¼ş
+		// ç»™é€‰æ‹©å›¾ç‰‡çš„æŒ‰é’®æ·»åŠ äº‹ä»¶
 		btnChooseImage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fileChooser = new JFileChooser();
-				fileChooser.setFileFilter(new FileNameExtensionFilter("Í¼Æ¬ÎÄ¼ş", "jpg", "JPG", "jpeg", "png", "PNG"));
+				fileChooser.setFileFilter(new FileNameExtensionFilter("å›¾ç‰‡æ–‡ä»¶", "jpg", "JPG", "jpeg", "png", "PNG"));
 				if(fileChooser.showOpenDialog(null)==JFileChooser.APPROVE_OPTION) {
 					File f = fileChooser.getSelectedFile();
 					ImageIcon image = new ImageIcon(f.getPath());
@@ -184,7 +186,7 @@ public class EditFrm extends JFrame{
 			}
 		});
 		
-		// ¸ø±£´æ°´Å¥Ìí¼ÓÊÂ¼ş
+		// ç»™ä¿å­˜æŒ‰é’®æ·»åŠ äº‹ä»¶
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String title = titleInput.getText().trim(),
@@ -195,7 +197,7 @@ public class EditFrm extends JFrame{
 						type = typeInput.getText().trim(),
 						country = countryInput.getText().trim(),
 						detail = detailInput.getText().trim(),
-						// ½â¾ö°ÑÂ·¾¶²åÈëmySqlÊı¾İ¿âÖĞ£¬·´Ğ±¸ÜÏûÊ§µÄÎÊÌâ
+						// è§£å†³æŠŠè·¯å¾„æ’å…¥mySqlæ•°æ®åº“ä¸­ï¼Œåæ–œæ æ¶ˆå¤±çš„é—®é¢˜
 						thumb = thumbInput.replace("\\", "\\\\");
 				
 				if (title.length() > 0 && actors.length() >0 && director.length() > 0
@@ -214,21 +216,21 @@ public class EditFrm extends JFrame{
 					if (editing) {
 						if (Util.updateMovie(id, movie)) {
 							that.dispose();
-							JOptionPane.showMessageDialog(null, "¸üĞÂ³É¹¦£¡", "×´Ì¬ÌáÊ¾", JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.showMessageDialog(null, "æ›´æ–°æˆåŠŸï¼", "çŠ¶æ€æç¤º", JOptionPane.INFORMATION_MESSAGE);
 						} else {
-							JOptionPane.showMessageDialog(null, "¸üĞÂÊ§°Ü£¡", "´íÎó", JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(null, "æ›´æ–°å¤±è´¥ï¼", "é”™è¯¯", JOptionPane.ERROR_MESSAGE);
 						}
 					} else {
 						if (Util.addMovie(movie)) {
 							that.dispose();
-							JOptionPane.showMessageDialog(null, "Ìí¼Ó³É¹¦£¡", "×´Ì¬ÌáÊ¾", JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.showMessageDialog(null, "æ·»åŠ æˆåŠŸï¼", "çŠ¶æ€æç¤º", JOptionPane.INFORMATION_MESSAGE);
 						} else {
-							JOptionPane.showMessageDialog(null, "Ìí¼ÓÊ§°Ü£¡", "´íÎó", JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(null, "æ·»åŠ å¤±è´¥ï¼", "é”™è¯¯", JOptionPane.ERROR_MESSAGE);
 						}
 					}
 					parent.refresh();
 				} else {
-					JOptionPane.showMessageDialog(null, "ÇëÍêÕûÌîĞ´£¡", "´íÎó", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "è¯·å®Œæ•´å¡«å†™ï¼", "é”™è¯¯", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});

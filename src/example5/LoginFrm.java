@@ -10,12 +10,12 @@ import javax.swing.*;
 public class LoginFrm extends JFrame implements ActionListener{
 
 	private Font defaultFont = new Font("Microsoft YaHei", 0, 24);
-	private JLabel headerLabel = new JLabel("µçÓ°¹ÜÀíÏµÍ³");
-	private JLabel labelUser = new JLabel("ÓÃ»§Ãû");
-	private JLabel labelPwd = new JLabel("ÃÜ   Âë");
+	private JLabel headerLabel = new JLabel("ç”µå½±ç®¡ç†ç³»ç»Ÿ");
+	private JLabel labelUser = new JLabel("ç”¨æˆ·å");
+	private JLabel labelPwd = new JLabel("å¯†   ç ");
 	private JTextField inputUser = new JTextField(16);
 	private JPasswordField inputPwd = new JPasswordField(16);
-	private JButton btnSubmit = new JButton("µÇÂ¼");
+	private JButton btnSubmit = new JButton("ç™»å½•");
 	private LoginFrm that = this;
 	
 	LoginFrm() {
@@ -24,7 +24,7 @@ public class LoginFrm extends JFrame implements ActionListener{
 	}
 	
 	private void initLayout() {
-		setTitle("µÇÂ¼-µçÓ°ĞÅÏ¢¹ÜÀí");
+		setTitle("ç™»å½•-ç”µå½±ä¿¡æ¯ç®¡ç†");
 		setBounds(580, 300, 450, 400);
 		getContentPane().setBackground(new Color(208, 233, 255));
 		setLayout(null);
@@ -58,7 +58,7 @@ public class LoginFrm extends JFrame implements ActionListener{
 	}
 	
 	private void addListener() {
-		// ¸øµÇÂ¼°´Å¥°ó¶¨ÊÂ¼ş
+		// ç»™ç™»å½•æŒ‰é’®ç»‘å®šäº‹ä»¶
 		btnSubmit.addActionListener(this);
 	}
 	
@@ -72,9 +72,9 @@ public class LoginFrm extends JFrame implements ActionListener{
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		// ÑéÖ¤ÓÃ»§ÃûºÍÃÜÂë
+		// éªŒè¯ç”¨æˆ·åå’Œå¯†ç 
 		if (!checkTextFields()) {
-			JOptionPane.showMessageDialog(null, "ÇëÊäÈëÕıÈ·µÄÓÃ»§ÃûºÍÃÜÂë", "´íÎó£¡", JOptionPane.ERROR_MESSAGE );
+			JOptionPane.showMessageDialog(null, "è¯·è¾“å…¥æ­£ç¡®çš„ç”¨æˆ·åå’Œå¯†ç ", "é”™è¯¯ï¼", JOptionPane.ERROR_MESSAGE );
 			return;
 		}
 		new ManageFrm(inputUser.getText().trim());

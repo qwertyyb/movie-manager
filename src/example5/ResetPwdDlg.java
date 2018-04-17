@@ -14,22 +14,22 @@ public class ResetPwdDlg extends JDialog implements ActionListener{
 	private JPasswordField originInput = new JPasswordField(),
 			newInput = new JPasswordField(),
 			confirmInput = new JPasswordField();
-	private JButton btnSubmit = new JButton("È·¶¨");
+	private JButton btnSubmit = new JButton("ç¡®å®š");
 
 	public void actionPerformed(ActionEvent e) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
 		String origin = new String(originInput.getPassword()).trim(),
 				newPwd = new String(newInput.getPassword()).trim(),
 				confirmPwd = new String(confirmInput.getPassword()).trim();
 		if (origin.length() > 0 && newPwd.length() > 0 && newPwd.equals(confirmPwd)) {
 			if(Util.resetPwd(((ManageFrm)getOwner()).getUser(), origin, newPwd)) {
-				JOptionPane.showMessageDialog(null, "ÃÜÂëÒÑĞŞ¸Ä£¡", "³É¹¦", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "å¯†ç å·²ä¿®æ”¹ï¼", "æˆåŠŸ", JOptionPane.INFORMATION_MESSAGE);
 				this.dispose();
 			} else {
-				JOptionPane.showMessageDialog(null, "Ô­ÃÜÂë²»ÕıÈ·", "´íÎó", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "åŸå¯†ç ä¸æ­£ç¡®", "é”™è¯¯", JOptionPane.ERROR_MESSAGE);
 			}
 		} else {
-			JOptionPane.showMessageDialog(null, "Çë¼ì²éÊäÈë", "´íÎó", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "è¯·æ£€æŸ¥è¾“å…¥", "é”™è¯¯", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	
@@ -39,9 +39,9 @@ public class ResetPwdDlg extends JDialog implements ActionListener{
 	}
 	
 	private void initLayout() {
-		JLabel labelOrigin = new JLabel("Ô­ÃÜÂë"),
-				labelNew = new JLabel("ĞÂÃÜÂë"),
-				labelConfirm = new JLabel("È·ÈÏÃÜÂë");
+		JLabel labelOrigin = new JLabel("åŸå¯†ç "),
+				labelNew = new JLabel("æ–°å¯†ç "),
+				labelConfirm = new JLabel("ç¡®è®¤å¯†ç ");
 		
 		labelOrigin.setFont(defaultFont);
 		labelNew.setFont(defaultFont);
@@ -76,7 +76,7 @@ public class ResetPwdDlg extends JDialog implements ActionListener{
 		getContentPane().setBackground(Color.WHITE);
 		setResizable(false);
 		setBounds(550, 400, 400, 300);
-		setTitle("ÖØÖÃÃÜÂë");
+		setTitle("é‡ç½®å¯†ç ");
 		setVisible(true);
 	}
 	

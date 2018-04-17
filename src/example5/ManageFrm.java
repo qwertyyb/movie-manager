@@ -29,7 +29,7 @@ class DetailPanel extends JPanel {
 	private Font defaultFont = new Font("Microsoft YaHei", 0, 24);
 	
 	private void initLayout() {
-		// ÉèÖÃ×ÖÌå
+		// è®¾ç½®å­—ä½“
 		thumb.setFont(defaultFont);
 		thumb.setSize(300, 400);
 		title.setFont(defaultFont);
@@ -41,7 +41,7 @@ class DetailPanel extends JPanel {
 		country.setFont(defaultFont);
 		detail.setFont(defaultFont);
 		
-		// ÉèÖÃ¾çÇé¹£¸Å×Ô¶¯»»ĞĞ²¢Ìí¼Ó¹ö¶¯Ìõ
+		// è®¾ç½®å‰§æƒ…æ¢—æ¦‚è‡ªåŠ¨æ¢è¡Œå¹¶æ·»åŠ æ»šåŠ¨æ¡
 		detail.setLineWrap(true);
 		detail.setWrapStyleWord(true);
 		detail.setEditable(false);
@@ -81,21 +81,21 @@ class DetailPanel extends JPanel {
 	
 	DetailPanel(HashMap<String, String> movie){
 		initLayout();
-		// ³õÊ¼»¯Êı¾İ
+		// åˆå§‹åŒ–æ•°æ®
 		ImageIcon image = new ImageIcon(movie.get("thumb"));
 		image.setImage(image.getImage().getScaledInstance(300, 400, Image.SCALE_DEFAULT));
 		thumb.setIcon(image);
 		thumb.setSize(20, 20);
-		title.setText("µçÓ°Ãû£º" + movie.get("title"));
+		title.setText("ç”µå½±åï¼š" + movie.get("title"));
 		title.setFont(new Font("Microsoft YaHei", 0, 32));
 		title.setForeground(Color.RED);
-		actors.setText("ÑİÔ±£º" + movie.get("actors"));
-		director.setText("µ¼Ñİ£º" + movie.get("director"));
-		showDate.setText("ÉÏÓ³Ê±¼ä£º" + movie.get("showDate"));
-		time.setText("Ê±³¤£º" + movie.get("time"));
-		type.setText("ÀàĞÍ£º" + movie.get("type"));
-		country.setText("¹ú¼Ò£º" + movie.get("country"));
-		detail.setText("¾çÇé¹£¸Å£º\n" + movie.get("detail"));
+		actors.setText("æ¼”å‘˜ï¼š" + movie.get("actors"));
+		director.setText("å¯¼æ¼”ï¼š" + movie.get("director"));
+		showDate.setText("ä¸Šæ˜ æ—¶é—´ï¼š" + movie.get("showDate"));
+		time.setText("æ—¶é•¿ï¼š" + movie.get("time"));
+		type.setText("ç±»å‹ï¼š" + movie.get("type"));
+		country.setText("å›½å®¶ï¼š" + movie.get("country"));
+		detail.setText("å‰§æƒ…æ¢—æ¦‚ï¼š\n" + movie.get("detail"));
 		this.movie = movie;
 	}
 	
@@ -108,10 +108,10 @@ public class ManageFrm extends JFrame {
 	
 	private JMenuBar menuBar = new JMenuBar();
 	private Font defaultFont = new Font("Microsoft YaHei", 0, 24);
-	private JButton btnAdd = new JButton("Ìí¼ÓµçÓ°");
-	private JButton btnEdit = new JButton("±à¼­µçÓ°");
-	private JButton btnDel = new JButton("É¾³ıµçÓ°");
-	private JLabel labelTitle = new JLabel("µçÓ°¹ÜÀíÏµÍ³");
+	private JButton btnAdd = new JButton("æ·»åŠ ç”µå½±");
+	private JButton btnEdit = new JButton("ç¼–è¾‘ç”µå½±");
+	private JButton btnDel = new JButton("åˆ é™¤ç”µå½±");
+	private JLabel labelTitle = new JLabel("ç”µå½±ç®¡ç†ç³»ç»Ÿ");
 	private JTabbedPane tabPane = new JTabbedPane(JTabbedPane.LEFT);
 	
 	private ManageFrm that = this;
@@ -140,24 +140,24 @@ public class ManageFrm extends JFrame {
 		});
 		btnDel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int result = JOptionPane.showConfirmDialog(that, "É¾³ıºó½«²»¿É»Ö¸´£¬ÊÇ·ñÉ¾³ı£¿", "È·ÈÏ", JOptionPane.WARNING_MESSAGE);
+				int result = JOptionPane.showConfirmDialog(that, "åˆ é™¤åå°†ä¸å¯æ¢å¤ï¼Œæ˜¯å¦åˆ é™¤ï¼Ÿ", "ç¡®è®¤", JOptionPane.WARNING_MESSAGE);
 				if (result != JOptionPane.OK_OPTION) {
 					return;
 				}
 				DetailPanel detailPanel = (DetailPanel)tabPane.getSelectedComponent();
 				int id = Integer.parseInt(detailPanel.getMovie().get("id"));
 				if (Util.deleteMovie(id)) {
-					JOptionPane.showMessageDialog(that, "É¾³ı³É¹¦£¡", "³É¹¦", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(that, "åˆ é™¤æˆåŠŸï¼", "æˆåŠŸ", JOptionPane.INFORMATION_MESSAGE);
 					that.refresh();
 				} else {
-					JOptionPane.showMessageDialog(that, "É¾³ıÊ§°Ü£¡", "´íÎó", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(that, "åˆ é™¤å¤±è´¥ï¼", "é”™è¯¯", JOptionPane.ERROR_MESSAGE);
 				}
 				
 			}
 		});
 	}
 	
-	// ÖØĞÂ´ÓÊı¾İ¿â»ñÈ¡Êı¾İ£¬²¢ÏÔÊ¾µ½Ò³ÃæÉÏ
+	// é‡æ–°ä»æ•°æ®åº“è·å–æ•°æ®ï¼Œå¹¶æ˜¾ç¤ºåˆ°é¡µé¢ä¸Š
 	public void refresh() {
 		tabPane.removeAll();
 		LinkedList<HashMap<String, String>> movies = Util.getAllMovie();
@@ -168,15 +168,15 @@ public class ManageFrm extends JFrame {
 	}
 	
 	private void initLayout() {
-		setTitle("¹ÜÀí-µçÓ°¹ÜÀíÏµÍ³ ");
+		setTitle("ç®¡ç†-ç”µå½±ç®¡ç†ç³»ç»Ÿ ");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setBackground(Color.WHITE);
 		setBounds(100, 100, 1600, 920);
 		
-		// ²Ëµ¥À¸
-		JMenu MovieMenu = new JMenu("µçÓ°¹ÜÀí");
+		// èœå•æ 
+		JMenu MovieMenu = new JMenu("ç”µå½±ç®¡ç†");
 		MovieMenu.setFont(defaultFont);
-		JMenuItem addItem = new JMenuItem("Ìí¼Ó");
+		JMenuItem addItem = new JMenuItem("æ·»åŠ ");
 		addItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new EditFrm(that);
@@ -184,9 +184,9 @@ public class ManageFrm extends JFrame {
 		});
 		addItem.setFont(defaultFont);
 		MovieMenu.add(addItem);
-		JMenu userMenu = new JMenu("ÕË»§¹ÜÀí");
+		JMenu userMenu = new JMenu("è´¦æˆ·ç®¡ç†");
 		userMenu.setFont(defaultFont);
-		JMenuItem resetPwdItem = new JMenuItem("ÖØÖÃÃÜÂë");
+		JMenuItem resetPwdItem = new JMenuItem("é‡ç½®å¯†ç ");
 		resetPwdItem.setFont(defaultFont);
 		resetPwdItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -197,26 +197,26 @@ public class ManageFrm extends JFrame {
 		menuBar.add(MovieMenu);
 		menuBar.add(userMenu);
 		
-		// ×´Ì¬À¸
+		// çŠ¶æ€æ 
 		JToolBar toolBar = new JToolBar();
-		labelUser.setText("ÓÃ»§£º" + user);
+		labelUser.setText("ç”¨æˆ·ï¼š" + user);
 		toolBar.add(labelUser);
 		toolBar.setFloatable(false);
 		
-		// ÉèÖÃ×ÖÌå
+		// è®¾ç½®å­—ä½“
 		btnAdd.setFont(defaultFont);
 		btnEdit.setFont(defaultFont);
 		btnDel.setFont(defaultFont);
 		tabPane.setFont(defaultFont);
 		labelUser.setFont(defaultFont);
 		labelTitle.setFont(new Font("Microsoft YaHei", 0, 36));
-		// ÉèÖÃ±êÌâ¾ÓÖĞ
+		// è®¾ç½®æ ‡é¢˜å±…ä¸­
 		labelTitle.setHorizontalAlignment(JLabel.CENTER);
 		
-		// »ñÈ¡Êı¾İ²¢ÏÔÊ¾µ½×é¼şÉÏ
+		// è·å–æ•°æ®å¹¶æ˜¾ç¤ºåˆ°ç»„ä»¶ä¸Š
 		refresh();
 
-		// Ìí¼Ó°´Å¥
+		// æ·»åŠ æŒ‰é’®
 		JPanel panel = new JPanel();
 		panel.add(btnAdd);
 		panel.add(btnEdit);
